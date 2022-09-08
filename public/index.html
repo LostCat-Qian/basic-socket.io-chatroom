@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChatRoom</title>
+  <link rel="stylesheet" href="./css/index.css">
+  <link rel="stylesheet" href="//at.alicdn.com/t/c/font_3638580_x2ayz4uqkj.css">
+  <link rel="stylesheet" href="./js/jquery-emoji/lib/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="./js/jquery-emoji/dist/css/jquery.emoji.css">
+</head>
+
+<body>
+  <div class="all">
+    <div class="container">
+      <div id="login-container">
+        <h1 class="title">用户登录</h1>
+
+        <div class="userinfo">
+          <div class="user">
+            <span>用户名</span>
+            <input type="text" id="username">
+          </div>
+
+          <div class="avatar">
+            <span>选择头像</span>
+            <ul class="avatars">
+              <li class="active"><img src="./images/avatar01.webp" alt=""></li>
+              <li><img src="./images/avatar02.webp" alt=""></li>
+              <li><img src="./images/avatar03.webp" alt=""></li>
+              <li><img src="./images/avatar04.webp" alt=""></li>
+              <li><img src="./images/avatar05.webp" alt=""></li>
+              <li><img src="./images/avatar06.webp" alt=""></li>
+              <li><img src="./images/avatar07.webp" alt=""></li>
+              <li><img src="./images/avatar08.webp" alt=""></li>
+              <li><img src="./images/avatar09.webp" alt=""></li>
+              <li><img src="./images/avatar10.webp" alt=""></li>
+            </ul>
+          </div>
+
+          <button class="login-btn">登录</button>
+        </div>
+      </div>
+
+      <div id="chat-container" style="display: none;">
+        <div class="userinfo">
+          <div class="self">
+            <img class="avatar-url" src="./images/avatar01.webp" alt="">
+            <span class="username">趴姿菜狗</span>
+          </div>
+
+          <hr>
+
+          <div class="userlist-title">用户列表</div>
+          <div class="other-users">
+
+            <!-- <div class="user-card">
+              <img src="./images/avatar10.webp" alt="">
+              <span>香子兰</span>
+            </div> -->
+          </div>
+        </div>
+
+        <div class="comments">
+          <div class="title">聊天室(12)</div>
+          <hr>
+          <div class="main-chat">
+            <!-- <div class="self-comment">
+            <span class="info">在做什么？</span>
+            <img src="./images/avatar01.webp" alt="">
+          </div>
+
+          <div class="other-comment">
+            <div class="box-info">
+              <span class="username">菜狗</span>
+              <span class="info">在做什么？</span>
+            </div>
+            <img src="./images/avatar07.webp" alt="">
+          </div> -->
+
+            <!-- <div class="system-info">
+            xx邀请xx加入了群聊
+          </div> -->
+          </div>
+
+          <div class="operations">
+            <div class="tools">
+              <label for="">
+                <i class="iconfont icon-emoji-happy"></i>
+              </label>
+
+              <label for="">
+                <i class="iconfont icon-caijian"></i>
+              </label>
+
+              <label for="file">
+                <i class="iconfont icon-wj-wjj"></i>
+              </label>
+              <input type="file" name="file" id="file" class="d-none">
+            </div>
+            <div class="chat-input">
+              <div contenteditable id="content"></div>
+            </div>
+            <div class="btn">
+              <button id="sendMsg">发送</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/jquery.js"></script>
+  <script src="/js/index.js"></script>
+  <script src="./js/jquery-emoji/lib/script/jquery.mousewheel-3.0.6.min.js"></script>
+  <script src="./js/jquery-emoji/lib/script/jquery.mCustomScrollbar.min.js"></script>
+  <script src="./js/jquery-emoji/src/js/jquery.emoji.js"></script>
+</body>
+
+</html>

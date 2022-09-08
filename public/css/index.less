@@ -1,0 +1,336 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+// flex函数，封装主轴、副轴、排列方向三个属性
+.flex(@justify: center, @align: center, @direction: row) {
+  display: flex;
+  justify-content: @justify;
+  align-items: @align;
+  flex-direction: @direction;
+}
+
+.d-none {
+  display: none !important;
+}
+
+.d-block {
+  display: block !important;
+}
+
+// 图片被选中时的边框效果
+.active {
+  transition: all 0.3s;
+  border: 3px solid green;
+}
+
+body {
+  background: center no-repeat url('/images/NachoNeko.png');
+  background-size: 100% 110%;
+  backdrop-filter: blur(10px);
+  background-attachment: fixed;
+  .all {
+    width: 100vw;
+    height: 100vh;
+
+    .container {
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+      .flex();
+
+      // 登录框部分
+      #login-container {
+        width: 480px;
+        min-height: 480px;
+        border: 2px solid #efefef;
+        border-radius: 1rem;
+        background-color: rgba(255, 255, 255, 0.2);
+
+        .flex(center, center, column);
+
+        .title {
+          text-align: center;
+          margin: 1rem 0;
+        }
+
+        .userinfo {
+          flex: 1;
+          width: 80%;
+          margin-top: 1rem;
+          font-family: 'Microsoft YaHei';
+          font-size: 20px;
+
+          span {
+            display: block;
+            margin-bottom: 5px;
+          }
+
+          #username {
+            width: 100%;
+            height: 2.5rem;
+            outline: 0;
+            border: 4px solid #efefef;
+            border-radius: 0.5rem;
+            box-sizing: border-box;
+
+            &:focus {
+              transition: all 0.7s;
+              border: 4px solid #4d91fcb3;
+            }
+          }
+
+          .login-btn {
+            width: 100%;
+            height: 2.5rem;
+            color: #fff;
+            background-color: #1ea918;
+            margin-top: 1rem;
+            border: 1px solid rgba(30, 169, 24, 0.7);
+            border-radius: 10px;
+            cursor: pointer;
+          }
+        }
+
+        .avatar {
+          margin-top: 1rem;
+
+          span {
+            margin-top: 5px;
+          }
+
+          .avatars {
+            width: 100%;
+            min-height: 60%;
+            border: 1px solid #000;
+            list-style: none;
+            padding: 10px;
+            box-sizing: border-box;
+
+            display: grid;
+            grid-template-rows: repeat(2, 1fr);
+            grid-template-columns: repeat(5, 1fr);
+            gap: 5px;
+            justify-items: center;
+            align-items: center;
+
+            li {
+              height: 4rem;
+              margin-bottom: 0.2rem;
+              cursor: pointer;
+
+              img {
+                width: 4rem;
+              }
+            }
+          }
+        }
+      }
+
+      // 聊天窗口部分
+      #chat-container {
+        width: 1100px;
+        height: 100vh;
+        background-color: #fff;
+        .flex(space-around, center, row);
+
+        .userinfo {
+          min-width: 200px;
+          width: 30%;
+          height: 100vh;
+          background-color: #2e343a;
+          color: #fff;
+
+          img {
+            width: 3rem;
+          }
+
+          hr {
+            width: 95%;
+            margin: 0 auto;
+            background-color: #3f464a;
+            height: 2px;
+            border: none;
+          }
+
+          .self {
+            height: 5rem;
+            .flex(start, center, row);
+
+            img {
+              padding: 1rem;
+            }
+          }
+
+          .userlist-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            line-height: 4rem;
+            margin-left: 1rem;
+            border-bottom: 1px solid #3f464a;
+          }
+
+          .other-users {
+            overflow: auto;
+            height: 81%;
+
+            .user-card {
+              cursor: pointer;
+              width: 100%;
+              height: 5rem;
+              border-bottom: 1px solid #3f464a;
+              .flex(start, center, row);
+
+              &:hover {
+                background-color: rgba(63, 70, 74, 0.6);
+              }
+
+              img {
+                padding: 1rem;
+              }
+            }
+          }
+        }
+
+        .comments {
+          width: 70%;
+          min-width: 500px;
+          height: 100vh;
+          background-color: #ebedec;
+
+          hr {
+            background-color: #808488;
+            border: none;
+            height: 1px;
+            width: 95%;
+            margin: 0 auto;
+          }
+
+          .system-info {
+            text-align: center;
+            font-size: 14px;
+            color: #b0c2c2;
+          }
+
+          .title {
+            font-size: 1.4rem;
+            height: 4rem;
+            .flex(center, center);
+          }
+
+          .main-chat {
+            height: 60%;
+            overflow-y: auto;
+            border-bottom: 1px solid #808488;
+            padding: 1rem;
+
+            // 自己发送的消息的样式
+            .self-comment {
+              margin: 1rem 0;
+              max-width: 99%;
+              min-height: 2rem;
+              .flex(end, start, row);
+
+              .info {
+                min-height: 2rem;
+                min-width: 1rem;
+                display: inline-block;
+                background-color: #b6e080;
+                padding: 0.5rem;
+                margin-right: 1rem;
+                text-align: center;
+                line-height: 2rem;
+                border-radius: 4px;
+              }
+
+              img {
+                width: 3rem;
+                float: right;
+              }
+            }
+
+            // 别人发送的消息的样式
+            .other-comment {
+              margin: 1rem 0;
+              max-width: 99%;
+              min-height: 2rem;
+              .flex(start, start, row-reverse);
+
+              .box-info {
+                .flex(start, start, column);
+
+                .username {
+                  margin-left: 1rem;
+                  font-size: 14px;
+                  margin-bottom: 2px;
+                }
+
+                .info {
+                  min-height: 2rem;
+                  min-width: 1rem;
+                  padding: 0.5rem;
+                  margin-left: 1rem;
+                  display: inline-block;
+                  background-color: #fff;
+                  text-align: center;
+                  line-height: 2rem;
+                  border-radius: 4px;
+                }
+              }
+
+              img {
+                width: 3rem;
+                float: left;
+              }
+            }
+          }
+
+          .operations {
+            .tools {
+              width: 100%;
+              height: 2rem;
+              padding: 5px;
+              box-sizing: border-box;
+
+              i {
+                font-size: 28px;
+                margin: 5px;
+              }
+            }
+
+            .chat-input {
+              padding: 1rem;
+
+              #content {
+                width: 100%;
+                height: 100px;
+                background-color: rgba(255, 255, 255, 0);
+                border: none;
+                font-size: 15px;
+                resize: none;
+
+                &:focus {
+                  outline: none;
+                }
+              }
+            }
+
+            .btn {
+              .flex(end, center, row);
+              button {
+                width: 80px;
+                height: 30px;
+                margin-right: 1rem;
+                background-color: #fff;
+                border: none;
+                border-radius: 0.5rem;
+                cursor: pointer;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
